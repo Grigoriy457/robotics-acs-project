@@ -23,8 +23,8 @@ REDIRECT_AFTER_DELETE_ACCOUNT_TIME = 1500
 
 
 USE_YANDEX_EMAIL = False
-YANDEX_PASSWORD = "qgnalwksrztgwtyx"
-SENDINBLUE_API_TOKEN = "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"
+YANDEX_PASSWORD = "--------------"
+SENDINBLUE_API_TOKEN = "---------------------"
 NOREPLY_EMAIL = "no-reply@robotics-acs-project.tk"
 LOGIN_EMAIL = "login@robotics-acs-project.tk"
 

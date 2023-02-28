@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/static/favicons/site.webmanifest">
+  <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/static/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="/static/favicons/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>ACS For Schools | Teachers List</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <link href="/static/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="/static/css/nucleo-svg.css" rel="stylesheet" />
+
+  <script src="https://kit.fontawesome.com/a9e455503e.js" crossorigin="anonymous"></script>
+  <link id="pagestyle" href="/static/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+
+  <script src="/static/js/script.js"></script>
+
+  <script type="text/javascript" src="https://MomentJS.com/downloads/moment.js"></script>
+  <script type="text/javascript" src="/static/js/moment-timezone-with-data.js.js"></script>
+  <script>
+    update_timezone()
+  </script>
+
+  <link href="/static/css/toast.min.css" rel="stylesheet">
+  <script src="/static/js/toast.js"></script>
+
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+  <div id="bg-primary" class="min-height-300 bg-primary position-absolute w-100"></div>
+  <aside id="sidenav-main"
+    class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4">
+    <!-- Logo -->
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-xl-none"
+        aria-hidden="true" id="iconSidenav"></i>
+      <div class="main-logo">
+        <img src="/static/img/logo.png" alt="main logo" style="max-width: 100%;">
+      </div>
+    </div>
+    <!-- End Logo -->
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="/dashboard/">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/admin-teachers-list/">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-archive-2 text-dark text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Teachers list</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/admin-students-list/">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-address-book text-dark text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Students list</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin-schedule/">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Schedule</span>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/profile/">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">
+              Profile (Admin)
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/logout/">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+  <main class="main-content position-relative border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+      data-scroll="false">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <h6 class="font-weight-bolder text-white mb-0">Teachers list</h6>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
+          <ul class="navbar-nav  justify-content-end">
+            <li class="nav-item d-flex align-items-center">
+              <a href="/logout" class="nav-link text-white font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline" style="margin-left: 3px;">Logout</span>
+              </a>
+            </li>
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="card-header pb-0" style="display: flex; justify-content: space-between;">
+              <h6>Teachers table</h6>
+              <button id="save-btn" class="btn btn-primary btn-sm ms-auto"
+                onclick="window.location.href = '/create-new-teacher'">
+                Add new teacher
+              </button>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                        style="text-align: left;padding-left: 100px;">
+                        Teacher
+                      </th>
+                      <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Phone</th> -->
+                      <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status
+                      </th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                        Employed</th> -->
+                      <th class="text-secondary opacity-7"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for i in teachers_list %}
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1">
+                          <div>
+                            <img src="{{ i[4] }}" class="avatar avatar-sm me-3" alt="user1">
+                          </div>
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">{{ i[1] }}</h6>
+                            {% if i[2] != None %}
+                            <p class="text-xs text-secondary mb-0">{{ i[2] }}</p>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </td>
+                      <!-- <td>
+                        <h6 class="mb-0 text-sm">{{ i[1] }}</h6>
+                      </td> -->
+                      <!-- <td>
+                        <p class="text-xs font-weight-bold mb-0">Manager</p>
+                        <p class="text-xs text-secondary mb-0">Organization</p>
+                      </td>
+                      <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-success">Online</span>
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                      </td> -->
+                      <td class="align-middle">
+                        <a href="/profile/{{ i[0] }}?from=%2Fadmin-teachers-list%2F"
+                          class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
+                          data-original-title="Edit user">
+                          Edit
+                        </a>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="pt-4">
+        <div class="w-full px-6 mx-auto">
+          <div class="flex flex-wrap items-center -mx-3 lg:justify-between">
+            <div class="w-full max-w-full px-3 mt-0 mb-6 shrink-0 lg:mb-0 lg:w-1/2 lg:flex-none" style="width: 100%;">
+              <div class="text-sm leading-normal text-center copyright text-slate-500 lg:text-left">
+                ©
+                <script>
+                  document.write(new Date().getFullYear())
+                </script>,
+                made with <i class="fa fa-heart"></i> by
+                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+                for a better web.
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+  <!--   Core JS Files   -->
+  <script src="/static/js/core/popper.min.js"></script>
+  <script src="/static/js/core/bootstrap.min.js"></script>
+  <script src="/static/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="/static/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="/static/js/argon-dashboard.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="/static/js/script.js"></script>
+
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+</body>
+
+</html>

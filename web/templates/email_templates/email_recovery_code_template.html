@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/static/favicons/site.webmanifest">
+  <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/static/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="/static/favicons/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>ACS For Schools</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Open Sans';
+    }
+
+    .verify_code {
+      max-width: 400px;
+      padding: 1%;
+      text-align: center;
+      background-color: #51adff;
+      border-radius: 5px;
+      font-size: 20px;
+      font-weight: 600;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div style="max-width: 700px">
+    <img src="cid:logo" alt="main logo" style="max-width: 50%;">
+    <hr class="horizontal dark mt-0" style="height: 5px; background: #51adff; border: none;">
+    <h1>Your verify code:</h1>
+    <div class="verify_code">
+      <span id="code" onclick='console.log("test");'>{{ verify_code }}</span>
+    </div>
+  </div>
+</body>
+
+</html>

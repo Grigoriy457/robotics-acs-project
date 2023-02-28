@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/static/favicons/site.webmanifest">
+  <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/static/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="/static/favicons/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>ACS For Schools | Schedule</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="/static/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="/static/css/nucleo-svg.css" rel="stylesheet" />
+
+  <script src="https://kit.fontawesome.com/a9e455503e.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <link href="/static/css/nucleo-svg.css" rel="stylesheet" />
+  <link id="pagestyle" href="/static/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+
+  <link href="/static/css/argon-dashboard-tailwind.min.css?v=1.0.0" rel="stylesheet">
+  <link href="/static/css/perfect-scrollbar.css" type="text/css" rel="stylesheet">
+  <script src="/static/js/perfect-scrollbar.js" type="text/javascript" async="true"></script>
+  <script src="/static/js/fixed-plugin.js" type="text/javascript" async="true"></script>
+  <script src="/static/js/sidenav.js" type="text/javascript" async="true"></script>
+  <script src="/static/js/sidenav-burger.js" type="text/javascript" async="true"></script>
+  <script src="/static/js/dropdown.js" type="text/javascript" async="true"></script>
+  <script src="/static/js/navbar-sticky.js" type="text/javascript" async="true"></script>
+  <script src="https://buttons.github.io/buttons.js" type="text/javascript" async="true"></script>
+  <link href="/static/css/kanban.css" type="text/css" rel="stylesheet">
+
+  <script src="/static/js/script.js"></script>
+
+  <script type="text/javascript" src="https://MomentJS.com/downloads/moment.js"></script>
+  <script type="text/javascript" src="/static/js/moment-timezone-with-data.js.js"></script>
+  <script>
+    update_timezone()
+  </script>
+
+  <link href="/static/css/sweetalert2.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+  <link href="/static/css/toast.min.css" rel="stylesheet">
+  <script src="/static/js/toast.js"></script>
+
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <style>
+    ul#lessons-template>li.lessons-template,
+    ul#lessons-template>li.schedule-lesson {
+      margin-bottom: 0px;
+    }
+
+    .teacher-name {
+      font-size: 13px;
+    }
+
+    .selected_day {
+      border: #6171df 1px solid;
+    }
+
+    .now_this_lesson {
+      background: #d9f99d;
+    }
+
+    .schedule-lesson {
+      position: relative;
+    }
+
+    .cross {
+      position: absolute;
+      top: -3px;
+      right: 1px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+  <div class="min-height-300 bg-primary position-absolute w-100"></div>
+  <aside
+    class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
+    id="sidenav-main">
+    <!-- Logo -->
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-xl-none"
+        aria-hidden="true" id="iconSidenav"></i>
+      <div class="main-logo">
+        <img src="/static/img/logo.png" alt="main logo" style="max-width: 100%;">
+      </div>
+    </div>
+    <!-- End Logo -->
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="/dashboard/">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/admin-teachers-list/">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-archive-2 text-dark text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Teachers list</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/admin-students-list/">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-address-book text-dark text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Students list</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/admin-schedule/">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Schedule</span>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/profile/">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">
+              Profile (Admin)
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/logout/">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+  <main class="main-content position-relative border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+      data-scroll="false">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm">
+              <a class="opacity-5 text-white" href="javascript:;">
+                Schedule
+              </a>
+            </li>
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page">
+              Class schedule
+            </li>
+          </ol>
+          <h6 class="font-weight-bolder text-white mb-0">Class schedule ({{ class_name }})</h6>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
+          <ul class="navbar-nav  justify-content-end">
+            <li class="nav-item d-flex align-items-center">
+              <a href="/logout" class="nav-link text-white font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline" style="margin-left: 3px;">Logout</span>
+              </a>
+            </li>
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="container-fluid py-4">
+      <div class="card">
+        <div class="card-header pb-0" style="display: flex; justify-content: space-between;">
+          <h6>Class schedule</h6>
+          <button class="btn btn-primary btn-sm ms-auto" onclick="save_class_schedule(this)">Save changes</button>
+        </div>
+        <div class="card-body" style="padding: 10px;"></div>
+      </div>
+      <div class="w-full p-4 mx-auto" style="padding-left: 0px !important; padding-right: 0 !important;">
+        <div class="box-border relative w-auto mt-4" style="overflow-y: hidden;">
+          <div class="box-border inline-flex min-h-screen py-2" style="margin-left: 1.5rem; min-height: 40vh;">
+            <div id="class_schedule">
+              <div class="kanban-container" id="kanban-container" style="width:2520px;">
+                {% for i in schedule %}
+                <div data-id="_backlog" data-order="1" class="kanban-board"
+                  style="width: 340px; margin-left: 10px; margin-right: 10px;">
+                  <header class="kanban-board-header">
+                    <div class="kanban-title-board" style="display: flex; justify-content: space-between;">
+                      <span>{{ i[0].title() }}</span><span>{{ i[1] }}</span>
+                    </div>
+                  </header>
+                  {% if (not i[3]) and (i[2]|length > 0) %}
+                  <main>
+                    <div class="kanban-drag schedule-lessons__list" week-day-index="{{ i[4] }}"
+                      week-day-name="{{ i[0].title() }}">
+                      {% for j in i[2] %}
+                      <div
+                        class="schedule-lesson schedule-lesson__in-list kanban-item rounded-lg {% if j['is_now_this_lesson'] %} now_this_lesson {% endif %}"
+                        style="cursor: pointer; height: 100%;" lesson-name="{{ j['lesson_name'] }}"
+                        lesson-id="{{ j['lesson_id'] }}" week-day-name="{{ i[0].title() }}" week-day-index="{{ i[4] }}"
+                        onclick="show_lesson_time(this)">
+                        <h6 class="text mb-0 lesson-time" data-target="#jkanban-info-modal">
+                          {{ j["lesson_time__start"] }}-{{ j["lesson_time__end"] }}
+                        </h6>
+                        <p class="text mb-0 lesson-name" data-target="#jkanban-info-modal" data-toggle="modal">
+                          {{ j["lesson_name"] }}
+                        </p>
+                        <p class="text mb-0 teacher-name" data-target="#jkanban-info-modal">
+                          {{ j["theacher_name"] }}
+                        </p>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </main>
+                  {% else %}
+                  <main class="kanban-drag"
+                    style="display: flex; justify-content: center; align-items: center; font-size: 19px; padding-top: 0; padding-bottom: 40px;">
+                    there are no lessons on this day</main>
+                  {% endif %}
+                  <footer></footer>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-4">
+        <div class="card-header pb-0" style="display: flex; justify-content: space-between;">
+          <h6>Create new lesson</h6>
+        </div>
+        <div class="card-body">
+          <div class="row" style="max-width: 800px;">
+            <div class="col-md">
+              <div class="row">
+                <div class="col-md">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Lesson name</label>
+                    <input id="lesson_name-input" class="form-control" type="text">
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Teacher</label>
+                    <select id="teacher_id-input" class="form-control" style="appearance: auto;">
+                      <option value="">Choose a teacher</option>
+                      {% for user_id, user_name in teachers %}
+                      <option value="{{ user_id }}">{{ user_name }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <button id="createLesson-btn" class="btn btn-sm ms-auto primary-btn"
+                onclick="createLesson()">Create</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-4">
+        <div class="card-header pb-0" style="display: flex; justify-content: space-between;">
+          <h6>All lessons</h6>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md">
+              <div id="lessons-template"
+                style="display: flex; flex-wrap: wrap; flex-direction: row; justify-content: flex-start; padding: 0; margin: 0; white-space: nowrap;">
+                <!-- <li class="schedule-lesson kanban-item rounded-lg"
+                  style="cursor: pointer; border: dotted 5px #0000007a; min-width: 150px; text-align: center; margin-right: 5px; margin-left: 5px; height: 100%;">
+                  <p class="text" style="margin: 0;">
+                    Space
+                  </p>
+                </li> -->
+                {% for i in lessons %}
+                <div class="schedule-lesson kanban-item rounded-lg"
+                  style="cursor: grab; border: dotted 5px #0000007a; min-width: 150px; text-align: center; margin-right: 5px; margin-left: 5px; height: 100%;"
+                  lesson-name="{{ i[1] }}" lesson-id="{{ i[0] }}" teacher-name="{{ i[2] }}">
+                  <div class="cross" onclick="remove_lesson(this)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="feather feather-x">
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                  </div>
+                  <h6 class="text mb-0 lesson-time" data-target="#jkanban-info-modal"></h6>
+                  <p class="text mb-0" data-target="#jkanban-info-modal" data-toggle="modal">
+                    {{ i[1] }}
+                  </p>
+                  <p class="text mb-0 teacher-name" data-target="#jkanban-info-modal" data-toggle="modal">
+                    {{ i[2] }}
+                  </p>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="pt-4">
+        <div class="w-full px-6 mx-auto">
+          <div class="flex flex-wrap items-center -mx-3 lg:justify-between">
+            <div class="w-full max-w-full px-3 mt-0 mb-6 shrink-0 lg:mb-0 lg:w-1/2 lg:flex-none" style="width: 100%;">
+              <div class="text-sm leading-normal text-center copyright text-slate-500 lg:text-left">
+                ©
+                <script>
+                  document.write(new Date().getFullYear())
+                </script>,
+                made with <i class="fa fa-heart"></i> by
+                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+                for a better web.
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <div class="fixed-plugin" id="right-nav" onclick="is_opened_lesson = true;">
+    <div class="card shadow-lg" id="card">
+      <div class="card-header pb-0 pt-3 ">
+        <div class="float-start">
+          <h5 class="mt-3 mb-0"><span id="date-in-title" week-day-index="">Геометрия 10А</span></h5>
+        </div>
+        <div class="float-end mt-4 history_navbar_cross__div"
+          onclick='document.getElementById("right-nav").classList.remove("show"); unselect_last_lesson(); is_opened_lesson = false;'>
+          <button class="btn btn-link text-dark p-0 fixed-plugin-close-button" id="history_navbar_cross">
+            <i class="fa fa-close"></i>
+          </button>
+        </div>
+        <!-- End Toggle Button -->
+      </div>
+      <hr class="horizontal dark my-1">
+      <div class="card-body pt-sm-3 pt-0 overflow-auto" id="card-body">
+        <div>
+          <div class="row">
+            <div class="col-md">
+              <div class="form-group">
+                <label for="example-text-input" class="form-control-label">Lesson starts at</label>
+                <input id="lesson_starts_at-input" class="form-control time-input" type="time" oninput="time_edit()">
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-group">
+                <label for="example-text-input" class="form-control-label">Lesson ends at</label>
+                <input id="lesson_ends_at-input" class="form-control time-input" type="time" oninput="time_edit()">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--   Core JS Files   -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="/static/js/core/popper.min.js"></script>
+  <script src="/static/js/core/bootstrap.min.js"></script>
+  <script src="/static/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="/static/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="/static/js/argon-dashboard.js"></script>
+  <script src="/static/sortable-master/Sortable.js"></script>
+  <script src="/static/js/script.js"></script>
+  <script>
+    function time_edit() {
+      var lesson = document.getElementById("date-in-title");
+      var lesson_name = lesson.innerText.slice(lesson.innerText.indexOf(": ") + 1);
+      var week_day_index = Number(lesson.getAttribute("week-day-index"));
+      var start_time = document.getElementById("lesson_starts_at-input").value;
+      var end_time = document.getElementById("lesson_ends_at-input").value;
+
+      for (var i of document.getElementById("kanban-container").getElementsByClassName("kanban-board")[week_day_index].getElementsByClassName("schedule-lesson")) {
+        if (i.getElementsByClassName("lesson-name")[0].innerText.trim() == lesson_name.trim()) {
+          i.getElementsByClassName("lesson-time")[0].innerText = `${start_time}-${end_time}`;
+          sort_elems();
+          check_now_lesson();
+          return;
+        }
+      }
+    }
+
+    function sort_elems() {
+      $('.schedule-lessons__list').each(function () {
+        $(this).html(
+          $(this).find('.schedule-lesson').sort(function (a, b) {
+            var a = $(a).find('.lesson-time').eq(0).text().split("-")[0].split(":"),
+              b = $(b).find('.lesson-time').eq(0).text().split("-")[0].split(":");
+            let dsa = (parseInt(a[0]) * 60) + parseInt(a[1]),
+              dsb = (parseInt(b[0]) * 60) + parseInt(b[1]);
+            return (dsa > dsb ? 1 : (dsa < dsb) ? -1 : 0);
+          })
+        );
+      });
+    }
+
+    function remove_lesson(remove_btn) {
+      var lesson_template = remove_btn.parentElement;
+      var lesson_name = lesson_template.getAttribute("lesson-name");
+      var lesson_id = lesson_template.getAttribute("lesson-id");
+      Swal.fire({
+        title: 'Are you sure?',
+        text: `Also, all these lessons ('${lesson_name}') will be removed from the schedule and you will not be able to return it!`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, remove it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`/api/remove_lesson/${lesson_id}/`, {
+            method: 'POST',
+          })
+            .then(response => response.json())
+            .then(data => {
+              if (data.is_ok) {
+                lesson_template.remove();
+                for (var week of document.getElementsByClassName("kanban-board")) {
+                  for (var lesson of week.getElementsByClassName("schedule-lesson")) {
+                    if (lesson.getAttribute("lesson-id") === lesson_id) {
+                      lesson.remove();
+                    }
+                  }
+                }
+                onSuccessfull(`Lesson '${lesson_name}' removed sucsessufly!`);
+              }
+            })
+            .catch(error => {
+              console.error(error);
+              onError(error);
+              btn.disabled = false;
+            })
+        }
+      })
+    }
+
+    var lesson_in_templates_template = `
+      <div class="schedule-lesson kanban-item rounded-lg"
+        style="cursor: pointer; border: dotted 5px #0000007a; min-width: 150px; text-align: center; margin-right: 5px; margin-left: 5px; height: 100%;"
+        lesson-name="{ lesson_name }" lesson-id="{ lesson_id }" teacher-name="{ teacher_name }">
+        <div class="cross" onclick="remove_lesson(this)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-x">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </div>
+        <h6 class="text mb-0 lesson-time" data-target="#jkanban-info-modal"></h6>
+        <p class="text mb-0" data-target="#jkanban-info-modal" data-toggle="modal">
+          { lesson_name }
+        </p>
+        <p class="text mb-0 teacher-name" data-target="#jkanban-info-modal" data-toggle="modal">
+          { teacher_name }
+        </p>
+      </div>
+    `;
+    function createLesson() {
+      var lesson_input = document.getElementById("lesson_name-input");
+      lesson_input.style.border = "";
+      var lesson_name = lesson_input.value.trim();
+      var teacher_input = document.getElementById("teacher_id-input");
+      teacher_input.style.border = "";
+      var teacher_id = teacher_input.value;
+      var btn = document.getElementById("createLesson-btn");
+      btn.disabled = true;
+      if (lesson_name === "") {
+        wrongInput(lesson_input);
+        btn.disabled = false;
+        return;
+      }
+      if (teacher_id === "") {
+        wrongInput(teacher_input);
+        btn.disabled = false;
+        return;
+      }
+      fetch(`/api/create_lesson/${teacher_id}/${lesson_name}/`, {
+        method: 'POST',
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.is_ok) {
+            lesson_input.value = "";
+            teacher_input.getElementsByTagName("option")[0].selected = true;
+
+            var new_lesson = lesson_in_templates_template.replaceAll("{ lesson_id }", data.lesson_id).replaceAll("{ lesson_name }", data.lesson_name).replaceAll("{ teacher_name }", data.teacher_name);
+            document.getElementById("lessons-template").appendChild(stringToHTML(new_lesson).getElementsByClassName("schedule-lesson")[0]);
+            onSuccessfull(`Lesson '${data.lesson_name}' created sucsessufly!`);
+          } else if (data.error) {
+            onError(data.error);
+          } else {
+            onError("Error!");
+          }
+          btn.disabled = false;
+        })
+        .catch(error => {
+          console.error(error);
+          onError(error);
+          btn.disabled = false;
+        })
+    }
+
+    function check_now_lesson() {
+      var now_time = (new Date().getHours() * 60) + new Date().getMinutes()
+      var week_day = new Date().getDay() - 1;
+      if (week_day === -1) {
+        var week = document.getElementsByClassName('schedule-lessons__list')[6]
+      } else {
+        var week = document.getElementsByClassName('schedule-lessons__list')[week_day]
+      }
+      for (var lesson of week.getElementsByClassName("schedule-lesson")) {
+        var lesson_time_start = lesson.getElementsByClassName('lesson-time')[0].innerText.split("-")[0].split(":");
+        lesson_time_start = (parseInt(lesson_time_start[0]) * 60) + parseInt(lesson_time_start[1]);
+        var lesson_time_end = lesson.getElementsByClassName('lesson-time')[0].innerText.split("-")[1].split(":");
+        lesson_time_end = (parseInt(lesson_time_end[0]) * 60) + parseInt(lesson_time_end[1]);
+        if (lesson_time_start <= now_time && now_time <= lesson_time_end) {
+          lesson.classList.add("now_this_lesson");
+        } else {
+          lesson.classList.remove("now_this_lesson");
+        }
+      }
+    }
+    setInterval(check_now_lesson, 1000);
+
+    var is_opened_lesson = false;
+    var last_lesson = null;
+    function unselect_last_lesson() {
+      if (last_lesson !== null) {
+        last_lesson.classList.remove("selected_day");
+        last_lesson = null;
+      }
+    }
+    function show_lesson_time(lesson) {
+      if (last_lesson !== null) {
+        unselect_last_lesson();
+        document.getElementById("right-nav").classList.remove("show");
+        lesson.classList.add("selected_day");
+        setTimeout(function () {
+          document.getElementById("right-nav").classList.add("show");
+          show_lesson_time(lesson);
+          is_opened_lesson = false;
+        }, 180);
+        return;
+      }
+      unselect_last_lesson();
+
+      lesson.classList.add("selected_day");
+      document.getElementById("date-in-title").innerText = `${lesson.getAttribute("week-day-name")}: ${lesson.getAttribute("lesson-name")}`;
+      document.getElementById("date-in-title").setAttribute("week-day-index", lesson.getAttribute("week-day-index"));
+      var lesson_time = lesson.getElementsByClassName("lesson-time")[0].innerText.split("-");
+      document.getElementById("lesson_starts_at-input").value = lesson_time[0];
+      document.getElementById("lesson_ends_at-input").value = lesson_time[1];
+      document.getElementById("right-nav").classList.add("show");
+      is_opened_lesson = true;
+      last_lesson = lesson;
+    }
+    body.onclick = function () {
+      if (!is_opened_lesson) {
+        document.getElementById("right-nav").classList.remove("show");
+        unselect_last_lesson();
+      }
+      is_opened_lesson = false;
+    };
+
+
+    var lesson_in_schedule_template = `
+      <div class="schedule-lesson schedule-lesson__in-list kanban-item rounded-lg" style="cursor: pointer; height: 100%;" lesson-name="{ lesson_name }" lesson-id="{ lesson_id }" week-day-name="{ week_day_name }" week-day-index="{ week_day_index }" onclick="show_lesson_time(this)">
+        <h6 class="text mb-0 lesson-time" data-target="#jkanban-info-modal">
+          00:00-00:00
+        </h6>
+        <p class="text mb-0 lesson-name" data-target="#jkanban-info-modal" data-toggle="modal">
+          { lesson_name }
+        </p>
+        <p class="text mb-0 teacher-name" data-target="#jkanban-info-modal" data-toggle="modal">
+          { teacher_name }
+        </p>
+      </div>
+    `
+
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+
+    Sortable.prototype.moveItem = function (index, toIndex) {
+      var itemEl = this.el.children[index],
+        toEl = this.el.children[toIndex];
+
+      this.el.insertBefore(itemEl, toEl && (+toIndex ? toEl.nextElementSibling : toEl));
+    };
+
+    for (var i of document.getElementsByClassName('schedule-lessons__list')) {
+      new Sortable(i, {
+        group: {
+          name: "schedule-lessons",
+          put: function (to, from, item) {
+            console.log(to, from, item.classList)
+            for (var i of to.el.getElementsByClassName("schedule-lesson")) {
+              if (item.getAttribute("lesson-id") === i.getAttribute("lesson-id")) {
+                return false;
+              }
+            }
+            if (to.el.classList.contains("schedule-lessons__list") && item.classList.contains("schedule-lesson__in-list")) {
+              return false;
+            }
+            return true;
+          },
+        },
+        animation: 150,
+        swap: false,
+        sort: false,
+        // onSwap: function (from, to) {
+        //   console.log('onSwap:', from, to, from === to);
+        //   return from !== to
+        // },
+        onAdd: function (evt) {
+          var to = evt.to;
+          evt.item.outerHTML = lesson_in_schedule_template.replaceAll("{ lesson_name }", evt.item.getAttribute("lesson-name")).replaceAll("{ lesson_id }", evt.item.getAttribute("lesson-id")).replaceAll("{ teacher_name }", evt.item.getAttribute("teacher-name"))
+            .replaceAll("{ week_day_name }", to.getAttribute("week-day-name")).replaceAll("{ week_day_index }", to.getAttribute("week-day-index"))
+          console.log('onAdd:', evt);
+          sort_elems()
+        },
+        onUpdate: function (evt) { console.log('onUpdate:', evt.item); },
+        onRemove: function (evt) { console.log('onRemove:', evt.item); },
+        onEnd: function (evt) {
+          console.log('onEnd:', evt.item);
+          var from = evt.from;
+          var to = evt.to;
+          if (from.classList.contains("schedule-lessons__list") && to.classList.contains("schedule-lessons__list") && from.getAttribute("week-day-index") === to.getAttribute("week-day-index")) {
+            var oldElem = to.getElementsByTagName("h6")[evt.oldIndex].innerHTML.trim();
+            var newElem = to.getElementsByTagName("h6")[evt.newIndex].innerHTML.trim();
+            evt.to.getElementsByTagName("h6")[evt.newIndex].innerHTML = oldElem;
+            evt.to.getElementsByTagName("h6")[evt.oldIndex].innerHTML = newElem;
+          }
+        },
+      });
+    }
+
+    new Sortable(document.getElementById("lessons-template"), {
+      group: {
+        name: 'schedule-lessons',
+        pull: 'clone',
+        // put: function (to, from, elem) {
+        //   // return elem.classList.contains("lessons-template");
+        //   return true;
+        // },
+      },
+      sort: false,
+      animation: 150,
+      onAdd: function (evt) {
+        var elem = evt.item;
+        if (last_lesson === elem) {
+          document.getElementById("right-nav").classList.remove("show");
+        }
+        console.log('onAdd:', elem);
+        elem.remove()
+      },
+      onUpdate: function (evt) { console.log('onUpdate:', evt.item); },
+      onRemove: function (evt) { console.log('onRemove:', evt.item); },
+    });
+
+    function save_class_schedule(btn) {
+      btn.disabled = true;
+
+      var data = {};
+      var schedule = document.getElementById("class_schedule")
+      for (var i of schedule.getElementsByClassName("schedule-lessons__list")) {
+        var week_day_index = i.getAttribute("week-day-index");
+        let array = [];
+        for (var j of i.getElementsByClassName("schedule-lesson")) {
+          var lesson_id = j.getAttribute("lesson-id");
+          var lesson_name = j.getAttribute("lesson-name");
+          var lesson_time = j.getElementsByTagName("h6")[0].innerHTML.trim();
+          array.push([lesson_id, lesson_name, lesson_time]);
+        }
+        data[week_day_index] = array;
+      }
+
+      fetch(`/api/update_class_schedule/{{ class_id }}/`, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.is_ok) {
+            onSuccessfull("Class schedule sucsessufly updated!");
+          } else {
+            onError("Error!");
+          }
+          btn.disabled = false;
+        })
+        .catch(error => {
+          console.error(error);
+          onError(error);
+          btn.disabled = false;
+          return -1;
+        })
+    }
+  </script>
+</body>
+
+</html>

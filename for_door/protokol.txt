@@ -1,0 +1,30 @@
+To uno board:
+
+1 - yellow led on
+2 - yellow led off
+3 - green led on
+4 - green led off
+5 - red led on
+6 - red led off
+7 - open door
+8 - close door
+9 - buzer green
+10 - buzer red
+11 - buzer green short
+12 - blue led on
+13 - blue led off
+
+
+
+To wifi board:
+
+UID={card_uid} - send uid to server
+
+
+
+Server response:
+
+<-1 - website errors
+-1  - website is turned off
+0   - error
+1   - ok

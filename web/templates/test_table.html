@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Test table</title>
+
+     <style>
+               table {
+                   background: white;
+               }
+               
+               th, td {
+                    background: #00fffb1f;
+                    padding: 5px;
+               }
+     </style>
+</head>
+<body>
+    <h1>9Б, робототехника (3 урок)</h1>
+     <table>
+          <tr>
+              <th rowspan="2"></th>
+              <th colspan="8">Февраль</th>
+              <th colspan="4">Март</th>
+          </tr>
+          <tr>
+              <td>3</td>
+              <td>4</td>
+              <td>10</td>
+              <td>11</td>
+              <td>17</td>
+              <td>18</td>
+              <td>24</td>
+              <td>25</td>
+              <td>3</td>
+              <td>4</td>
+              <td>10</td>
+              <td>11</td>
+          </tr>
+          <tr>
+              <td>Смирнов Артём</td>
+              <td>н</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+          </tr>
+          <tr>
+              <td>Иванов Алексей</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>н</td>
+              <td></td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+          </tr>
+          <tr>
+              <td>Кузнецов Вадим</td>
+              <td></td>
+              <td></td>
+              <td>н</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+          </tr>
+          <tr>
+              <td>Попов Владимир</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+          </tr>
+          <tr>
+              <td>Васильев Валентин</td>
+              <td></td>
+              <td>н</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+          </tr>
+          <tr>
+              <td>Петров  Данил</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>н</td>
+              <td></td>
+              <td></td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+          </tr>
+          <tr>
+              <td>Соколов Денис</td>
+              <td>н</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>н</td>
+              <td></td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+          </tr>
+          <tr>
+              <td>Михайлов Дмитрий</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+              <td>н</td>
+          </tr>
+      </table>
+</body>
+<script>
+    var data = document.getElementsByTagName("td");
+    for (var i = 0; i < data.length; i++) {
+        if (data[i].textContent == "н") {
+            data[i].style.color = "#df0000";
+            data[i].style.fontStyle = "italic";
+            data[i].style.padding = "0 0 0 3px";
+        }
+    }
+</script>
+</html>

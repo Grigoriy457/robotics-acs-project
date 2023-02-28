@@ -1,0 +1,373 @@
+/* body {
+     overflow: hidden;
+} */
+
+.sidenav-header, hr {
+     margin-top: 16px;
+}
+
+.sidenav-header .main-logo {
+     width: 100%;
+     height: 100%;
+}
+
+div.col-xl-3 {
+     min-height: 100%;
+}
+
+div.dashboard-stats-card {
+     height: 100%;
+}
+
+div.svg-icon {
+    position: relative;
+}
+
+.main-logo {
+     height: 100%;
+}
+
+.main-logo img {
+     max-height: 100%;
+     max-width: 100%;
+}
+
+img.coffee-icon {
+     position: absolute;
+     right: 11px;
+     top: 12px;
+}
+
+.col-4 {
+     display: flex;
+     align-items: flex-end;
+     flex-direction: column;
+}
+
+div.bg-gradient-warning {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+i.ni-world {
+     top: 0;
+}
+
+i.ni-world::before {
+     font-size: 24px;
+}
+
+img.log-in-icon {
+     position: absolute;
+     right: 13px;
+     top: 12px;
+}
+
+img.log-out-icon {
+     position: absolute;
+     right: 10px;
+     top: 12px;
+}
+
+.bg-primary.disactive, aside.sidenav.disactive, .main-content.disactive {
+     filter: blur(8px);
+}
+
+.fire-alarm__message.active {
+     opacity: 1;
+     z-index: 20;
+}
+
+.fire-alarm__message {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     top: 0;
+
+     display: flex;
+     justify-content: center;
+     align-items: center;
+
+     transition: all 0.2s ease-in-out;
+}
+
+.bg-primary.active, aside.sidenav.active, .main-content.active {
+     filter: blur(0px);
+}
+
+.fire-alarm__message.disactive {
+     opacity: 0;
+     z-index: -1;
+}
+
+.message-box {
+     width: 35%;
+     height: 30%;
+     border: 0 solid rgba(0,0,0,.125);
+     border-radius: 1rem;
+     background-color: white;
+     box-shadow: 0 0 2rem 0 rgb(136 152 170 / 30%);
+}
+
+.message-box__header {
+     width: 100%;
+     height: 40%;
+     background-color: #ff8585b3;
+     border-radius: 1rem 1rem 0 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.message-box__error-img {
+     scale: 5;
+}
+
+.message-box__main {
+     width: 100%;
+     height: 60%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     text-align: center;
+     flex-direction: column;
+}
+
+.message-box__main-text__main {
+     font-weight: 600;
+     font-size: 30px;
+     margin-bottom: 0.15rem;
+}
+
+.message-box__main-text__sub {
+     font-size: 16px;
+}
+
+
+.fixed-plugin .card {
+     width: 900px;
+     right: -900px;
+     transition: .3s ease;
+}
+
+.exits-card {
+     width: 600px !important;
+}
+
+table {
+     width: 100%;
+}
+
+td, th {
+     text-align: center;
+}
+
+.history_navbar_cross__div {
+     margin-top: 1.3rem !important;
+}
+
+#history_navbar_cross {
+     scale: 1.2;
+}
+
+.disable-btn {
+     --bs-btn-color: #fff;
+     --bs-btn-bg: #de0a0a;
+     --bs-btn-border-color: #de0a0a;
+     --bs-btn-hover-color: #fff;
+     --bs-btn-hover-bg: #db4747;
+     --bs-btn-hover-border-color: #db4747;
+     --bs-btn-focus-shadow-rgb: 80, 97, 194;
+     --bs-btn-active-color: #fff;
+     --bs-btn-active-bg: #db4747;
+     --bs-btn-active-border-color: #db4747;
+     --bs-btn-active-shadow: none;
+     --bs-btn-disabled-color: #fff;
+     --bs-btn-disabled-bg: #de0a0a;
+     --bs-btn-disabled-border-color: #de0a0a;
+     color: #fff;
+}
+
+.primary-btn {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #5e72e4;
+    --bs-btn-border-color: #5e72e4;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #7687e8;
+    --bs-btn-hover-border-color: #6e80e7;
+    --bs-btn-focus-shadow-rgb: 80, 97, 194;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #7e8ee9;
+    --bs-btn-active-border-color: #6e80e7;
+    --bs-btn-active-shadow: none;
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #5e72e4;
+    --bs-btn-disabled-border-color: #5e72e4;
+}
+
+.disable-btn:hover, .disable-btn:focus {
+     color: #fff;
+     border: 0;
+}
+
+h6.lesson-time {
+     font-size: 13px;
+}
+
+
+@media (max-width: 1200px) {
+     .message-box__main-text__main {
+          font-size: 25px;
+     }
+}
+
+
+@media (max-width: 940px) {
+     .message-box {
+          width: 40%;
+     }
+
+     .message-box__error-img {
+          scale: 4;
+     }
+
+     .message-box__main-text__main {
+          font-size: 20px;
+     }
+
+     .message-box__main-text__sub {
+          font-size: 12px;
+     }
+}
+
+
+@media (max-width: 900px) {
+     .message-box {
+          width: 90%;
+          height: 30%;
+     }
+
+     .message-box__error-img {
+          scale: 4;
+     }
+
+     .message-box__main-text__main {
+          font-size: 28px;
+     }
+
+     .message-box__main-text__sub {
+          font-size: 18px;
+     }
+
+     .fixed-plugin .card {
+          width: 100%;
+          right: -100%;
+          transition: .3s ease;
+     }
+
+     .exits-card {
+          width: 100% !important;
+     }
+}
+
+
+@media (max-width: 767.98px) {
+     div.col-md-8 + div.col-md-4 {
+          margin-top: 2rem;
+     }
+
+     .feather-copy-token {
+          display: none;
+     }
+}
+
+
+@media (max-width: 425px) {
+     .message-box {
+          width: 90%;
+          height: 30%;
+     }
+
+     .message-box__error-img {
+          scale: 4;
+     }
+
+     .message-box__main-text__main {
+          font-size: 24px;
+     }
+
+     .message-box__main-text__sub {
+          font-size: 14px;
+     }
+}
+
+
+@media (max-width: 375px) {
+     .message-box {
+          width: 90%;
+          height: 30%;
+     }
+
+     .message-box__error-img {
+          scale: 3.5;
+     }
+
+     .message-box__main-text__main {
+          font-size: 22px;
+     }
+
+     .message-box__main-text__sub {
+          font-size: 14px;
+     }
+}
+
+
+@media (max-height: 800px) {
+     .message-box__error-img {
+          scale: 2.5;
+     }
+
+     .message-box__main-text__main {
+          font-size: 20px;
+     }
+
+     .message-box__main-text__sub {
+          font-size: 12px;
+     }
+}
+
+
+@media (max-height: 500px) {
+     .message-box__error-img {
+          scale: 2.5;
+     }
+
+     .message-box {
+          height: 50%;
+     }
+}
+
+
+@media (max-height: 400px) {
+     .message-box__error-img {
+          scale: 3.25;
+     }
+
+     .message-box {
+          height: 80%;
+     }
+
+     .message-box__main-text__main {
+          font-size: 25px;
+     }
+
+     .message-box__main-text__sub {
+          font-size: 16px;
+     }
+}
+
+.form-control:disabled, .form-control[readonly] {
+     background-color: #e9ecef;
+     opacity: 1;
+}

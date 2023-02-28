@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/static/favicons/site.webmanifest">
+  <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/static/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="/static/favicons/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>ACS For Schools | Schedule</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="/static/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="/static/css/nucleo-svg.css" rel="stylesheet" />
+
+  <script src="https://kit.fontawesome.com/a9e455503e.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <link href="/static/css/nucleo-svg.css" rel="stylesheet" />
+  <link id="pagestyle" href="/static/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+
+  <link href="/static/css/argon-dashboard-tailwind.min.css?v=1.0.0" rel="stylesheet">
+  <link href="/static/css/perfect-scrollbar.css" type="text/css" rel="stylesheet">
+  <script src="/static/js/perfect-scrollbar.js" type="text/javascript" async="true"></script>
+  <script src="/static/js/fixed-plugin.js" type="text/javascript" async="true"></script>
+  <script src="/static/js/sidenav.js" type="text/javascript" async="true"></script>
+  <script src="/static/js/sidenav-burger.js" type="text/javascript" async="true"></script>
+  <script src="/static/js/dropdown.js" type="text/javascript" async="true"></script>
+  <script src="/static/js/navbar-sticky.js" type="text/javascript" async="true"></script>
+  <script src="https://buttons.github.io/buttons.js" type="text/javascript" async="true"></script>
+  <link href="/static/css/kanban.css" type="text/css" rel="stylesheet">
+
+  <script src="/static/js/script.js"></script>
+
+  <script type="text/javascript" src="https://MomentJS.com/downloads/moment.js"></script>
+  <script type="text/javascript" src="/static/js/moment-timezone-with-data.js.js"></script>
+  <script>
+    update_timezone()
+  </script>
+
+  <link href="/static/css/toast.min.css" rel="stylesheet">
+  <script src="/static/js/toast.js"></script>
+
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+  <div class="min-height-300 bg-primary position-absolute w-100"></div>
+  <aside
+    class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
+    id="sidenav-main">
+    <!-- Logo -->
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-xl-none"
+        aria-hidden="true" id="iconSidenav"></i>
+      <div class="main-logo">
+        <img src="/static/img/logo.png" alt="main logo" style="max-width: 100%;">
+      </div>
+    </div>
+    <!-- End Logo -->
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="/dashboard/">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/teacher-schedule/">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Schedule</span>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/profile/">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">
+              Profile (Teacher)
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/logout/">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+  <main class="main-content position-relative border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+      data-scroll="false">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <h6 class="font-weight-bolder text-white mb-0">Schedule</h6>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
+          <ul class="navbar-nav  justify-content-end">
+            <li class="nav-item d-flex align-items-center">
+              <a href="/logout" class="nav-link text-white font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline" style="margin-left: 3px;">Logout</span>
+              </a>
+            </li>
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="w-full p-4 mx-auto" style="padding-left: 0px !important; padding-right: 0 !important;">
+      <div class="box-border relative w-auto mt-4" style="overflow-y: hidden;">
+        <div class="box-border inline-flex min-h-screen py-2" style="margin-left: 1.5rem; min-height: 75vh;">
+          <div id="myKanban">
+            <div class="kanban-container" style="width:2520px;">
+              {% for i in schedule %}
+              <div data-id="_backlog" data-order="1" class="kanban-board"
+                style="width: 340px; margin-left: 10px; margin-right: 10px;">
+                <header class="kanban-board-header">
+                  <div class="kanban-title-board" style="display: flex; justify-content: space-between;">
+                    <span>{{ i[0].title() }}</span><span>{{ i[1] }}</span>
+                  </div>
+                </header>
+                {% if (not i[3]) and (i[2]|length > 0) %}
+                <main class="kanban-drag">
+                  {% for j in i[2] %}
+                  <div class="kanban-item rounded-lg" data-eid="_task_1_title_id" data-class="rounded-lg"
+                    style="cursor: pointer; {% if j['is_now_this_lesson'] %}background: #d9f99d;{% endif %}"
+                    onclick="location.href=`/teacher-lesson/{{ j['lesson_id'] }}/{{ j['class_id'] }}/{{ j['lesson_date'] }}`">
+                    <h6 class="text mb-0 lesson-time" data-target="#jkanban-info-modal">{{ j["lesson_time__start"] }}-{{
+                      j["lesson_time__end"] }}</h6>
+                    <p class="text mb-0" data-target="#jkanban-info-modal" data-toggle="modal">{{ j["lesson_name"] }}
+                    </p>
+                  </div>
+                  {% endfor %}
+                </main>
+                {% else %}
+                <main class="kanban-drag"
+                  style="display: flex; justify-content: center; align-items: center; font-size: 19px; padding-top: 0; padding-bottom: 40px;">
+                  there are no lessons on this day</main>
+                {% endif %}
+                <footer></footer>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="fixed top-0 left-0 hidden w-full h-full overflow-x-hidden overflow-y-auto transition-opacity ease-linear opacity-0 outline-0 z-sticky ps"
+        aria-hidden="true" id="new-board-modal" role="dialog">
+        <div
+          class="relative w-auto transition-transform duration-300 ease-out pointer-events-none my-7 sm:max-w-125 sm:mx-auto -translate-y-13">
+          <div
+            class="relative flex flex-col w-full bg-white border border-solid pointer-events-auto bg-clip-padding border-black/20 rounded-xl outline-0">
+            <div
+              class="flex items-center justify-between p-4 border-b border-solid shrink-0 border-slate-100 rounded-t-xl ">
+              <h5 class="mb-0">Choose your new Board Name</h5>
+              <button type="button" data-target="#new-board-modal" data-toggle="modal"
+                class="flex items-center box-content w-4 h-4 text-slate-700 bg-transparent border-0 rounded-1.5 opacity-50 cursor-pointer p-2 -m-2 ml-auto"
+                aria-label="Close">
+                <span aria-hidden="true">
+                  <i class="fa fa-close" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="relative flex-auto p-4 pt-6">
+              <div class="relative flex flex-wrap items-stretch w-full mb-6 transition-all rounded-lg ease">
+                <span
+                  class="text-sm ease leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
+                  <i class="far fa-edit" aria-hidden="true"></i>
+                </span>
+                <input type="text"
+                  class="pl-9 text-sm focus:shadow-primary-outline dark:bg-slate-850 dark:placeholder:text-white/80 dark:text-white/80 ease w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none focus:transition-shadow"
+                  placeholder="Board Name" id="jkanban-new-board-name">
+              </div>
+              <div class="text-right">
+                <button
+                  class="inline-block px-6 py-3 m-1 text-xs font-bold text-center text-white uppercase align-middle transition-all ease-in bg-transparent border-0 border-transparent border-solid rounded-lg shadow-md cursor-pointer leading-pro tracking-tight-rem bg-150 bg-x-25 hover:-translate-y-px active:opacity-85 hover:shadow-xs bg-fuchsia-500"
+                  id="jkanban-add-new-board" data-toggle="modal" data-target="#new-board-modal">
+                  Save changes
+                </button>
+                <button data-target="#new-board-modal" data-toggle="modal"
+                  class="inline-block px-6 py-3 m-1 text-xs font-bold text-center text-white uppercase align-middle transition-all ease-in bg-transparent border-0 border-transparent border-solid rounded-lg shadow-md cursor-pointer leading-pro tracking-tight-rem bg-150 bg-x-25 hover:-translate-y-px active:opacity-85 hover:shadow-xs bg-slate-400"
+                  data-dismiss="modal">
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+          <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+        </div>
+        <div class="ps__rail-y" style="top: 0px; right: 0px;">
+          <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+        </div>
+      </div>
+      <div class="fixed inset-0 z-40 hidden bg-black opacity-50" id="new-board-modal-backdrop"></div>
+      <div
+        class="fixed top-0 left-0 hidden w-full h-full overflow-x-hidden overflow-y-auto transition-opacity ease-linear opacity-0 outline-0 z-sticky ps"
+        id="jkanban-info-modal" aria-hidden="true" tabindex="-1" role="dialog">
+        <div
+          class="relative w-auto transition-transform duration-300 ease-out pointer-events-none my-7 sm:max-w-125 sm:mx-auto -translate-y-13">
+          <div
+            class="relative flex flex-col w-full bg-white border border-solid pointer-events-auto bg-clip-padding border-black/20 rounded-xl outline-0">
+            <div
+              class="flex items-center justify-between p-4 border-b border-solid shrink-0 border-slate-100 rounded-t-xl">
+              <h5 class="mb-0">Task details</h5>
+              <button type="button" data-target="#jkanban-info-modal" data-toggle="modal"
+                class="flex items-center box-content w-4 h-4 text-slate-700 bg-transparent border-0 rounded-1.5 opacity-50 cursor-pointer p-2 -m-2 ml-auto"
+                aria-label="Close">
+                <span aria-hidden="true">
+                  <i class="fa fa-close" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="relative flex-auto p-4 pt-6">
+              <input id="jkanban-task-id" class="hidden">
+              <div class="relative flex flex-wrap items-stretch w-full mb-6 transition-all rounded-lg ease">
+                <span
+                  class="text-sm ease leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
+                  <i class="far fa-edit" aria-hidden="true"></i>
+                </span>
+                <input
+                  class="pl-9 text-sm focus:shadow-primary-outline dark:bg-slate-850 dark:placeholder:text-white/80 dark:text-white/80 ease w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none focus:transition-shadow"
+                  placeholder="Task Title" type="text" id="jkanban-task-title">
+              </div>
+              <div class="relative flex flex-wrap items-stretch w-full mb-6 transition-all rounded-lg ease">
+                <span
+                  class="text-sm ease leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
+                  <i class="fas fa-user" aria-hidden="true"></i>
+                </span>
+                <input
+                  class="pl-9 text-sm focus:shadow-primary-outline dark:bg-slate-850 dark:placeholder:text-white/80 dark:text-white/80 ease w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none focus:transition-shadow"
+                  placeholder="Task Assignee" type="text" id="jkanban-task-assignee">
+              </div>
+              <div class="mb-4">
+                <textarea
+                  class="-ml-px relative flex-auto w-full min-w-0 focus:shadow-primary-outline dark:bg-slate-850 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease block appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"
+                  placeholder="Task Description" id="jkanban-task-description" rows="4"></textarea>
+              </div>
+              <div
+                class="relative hidden p-4 mb-4 text-white border border-solid rounded-lg border-lime-300 bg-gradient-to-tl from-emerald-500 to-teal-400">
+                Changes saved!</div>
+              <div class="text-right">
+                <button
+                  class="inline-block px-6 py-3 m-1 text-xs font-bold text-center text-white uppercase align-middle transition-all ease-in bg-transparent border-0 border-transparent border-solid rounded-lg shadow-md cursor-pointer leading-pro tracking-tight-rem bg-150 bg-x-25 hover:-translate-y-px active:opacity-85 hover:shadow-xs bg-fuchsia-500"
+                  id="jkanban-update-task" data-toggle="modal" data-target="#jkanban-info-modal">
+                  Save changes
+                </button>
+                <button data-target="#jkanban-info-modal" data-toggle="modal"
+                  class="inline-block px-6 py-3 m-1 text-xs font-bold text-center text-white uppercase align-middle transition-all ease-in bg-transparent border-0 border-transparent border-solid rounded-lg shadow-md cursor-pointer leading-pro tracking-tight-rem bg-150 bg-x-25 hover:-translate-y-px active:opacity-85 hover:shadow-xs bg-slate-400"
+                  data-dismiss="modal">
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+          <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+        </div>
+        <div class="ps__rail-y" style="top: 0px; right: 0px;">
+          <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+        </div>
+      </div>
+      <div class="fixed inset-0 z-40 hidden bg-black opacity-50" id="jkanban-info-modal-backdrop"></div>
+      <footer class="pt-4">
+        <div class="w-full px-6 mx-auto">
+          <div class="flex flex-wrap items-center -mx-3 lg:justify-between">
+            <div class="w-full max-w-full px-3 mt-0 mb-6 shrink-0 lg:mb-0 lg:w-1/2 lg:flex-none" style="width: 100%;">
+              <div class="text-sm leading-normal text-center copyright text-slate-500 lg:text-left">
+                ©
+                <script>
+                  document.write(new Date().getFullYear())
+                </script>,
+                made with <i class="fa fa-heart"></i> by
+                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+                for a better web.
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+  <!--   Core JS Files   -->
+  <script src="/static/js/core/popper.min.js"></script>
+  <script src="/static/js/core/bootstrap.min.js"></script>
+  <script src="/static/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="/static/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="/static/js/argon-dashboard.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="/static/js/script.js"></script>
+
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+</body>
+
+</html>
